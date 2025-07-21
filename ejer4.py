@@ -1,0 +1,31 @@
+import pandas as pd
+datos = pd.read_csv("movies3.csv", encoding="latin-1")
+
+df=pd.DataFrame(datos)
+print(df)
+print("maximo duracion de peliculas:")
+print(df['duration'].max())
+minutos=df['duration'].max()
+print("las horas del la pelicula son:" , minutos // 60)
+
+print("la pelicula mas larga es:")
+idx = df['duration'].idxmax()
+print(df.loc[idx, 'movie_title'])
+print("comparacion de likes entre peliculas:")
+df1=df.groupby('genres')['movie_facebook_likes'].sum().reset_index()
+print(df1)
+print("el genero mas gustado es:")
+likes=df.groupby('genres')['movie_facebook_likes'].sum().reset_index()
+print(likes.loc[likes['movie_facebook_likes'].idxmax(), 'genres'])
+print("con ", likes['movie_facebook_likes'].max(), "likes")
+print("cual es el promedio de prosupuesto por director")
+df2=df.groupby('director_name')['budget'].mean().reset_index()
+print(df2)
+print("cual es el genero q gasta mas dinero")
+dinero = df.groupby('genres')['budget'].sum().reset_index()
+print(dinero)
+
+
+print("cual es el actor principal que trae mas ganancia")
+actor= df.groupby('actor_1_name')['gross'].sum().reset_index()
+print(actor.loc[actor['gross'].idxmax(), 'actor_1_name'])
