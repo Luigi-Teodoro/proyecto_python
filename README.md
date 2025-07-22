@@ -1,2 +1,1 @@
-
-
+Este es un trabajo analizando dataframes utilizando pandas y numpy en Python. Se realizan diferentes ejercicios de manipulación, análisis y visualización de datos a partir de archivos CSV, aplicando operaciones como agrupamientos, conversiones de tipos, filtrados y cálculos estadísticos.
